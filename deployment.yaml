@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: csi-deployment
+  labels:
+    app: csi
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: csi
+  template:
+    metadata:
+      labels:
+        app: csi
+    spec:
+      containers:
+      - name: csi
+        image: mchebbii/csi:latest
+        ports:
+        - containerPort: 3000
